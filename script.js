@@ -23,16 +23,14 @@ function capturer() {
 }
 
 function sauvegarder() {
-    if (compteur !== 0) {
-        sauvegardeEl.textContent += compteur + " Pokémons" + " - ";
-        // remettre le compteur à zéro
-        localStorage.setItem("captures", sauvegardeEl.textContent);
-        compteur = 0;
-        compteurEl.textContent = compteur;
-    }
+    sauvegardeEl.textContent += compteur + " Pokémons" + " - ";
+    // remettre le compteur à zéro
+    localStorage.setItem("captures", sauvegardeEl.textContent);
+    compteur = 0;
+    compteurEl.textContent = compteur;
 }
 
 // Quand l'onglet du navigateur à fini de se charger
-Window.addEventListener("load", () => {
-    sauvegardeEl.textContent = localStorage.getItem('captures');
+window.addEventListener('load', () => {
+    sauvegardeEl.textContent = localStorage.getItem('captures') || "Mes captures : ";
 });
